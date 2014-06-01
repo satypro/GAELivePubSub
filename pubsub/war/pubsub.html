@@ -1,0 +1,63 @@
+   
+ <html>
+ <head>
+ <title>Pub Sub Using Channel API</title>
+ </head>
+ <body>
+   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src='/_ah/channel/jsapi'></script>
+   <script type="text/javascript" >
+   var channel;
+   var socket;
+   $(document).ready(function(){
+	    						connectFeeds();
+               });
+
+  function connectFeeds(){
+					      
+				        var request = $.ajax({
+										  url: "/pubsub",
+										  type: "POST",
+										  data: {user:'pubsub'},
+										  dataType: "html"
+						              });
+	                    
+				       request.done(function(msg){
+				        	alert("recieved"+msg);
+				        	 channel 			= new goog.appengine.Channel($.trim(msg));
+					         socket 			= channel.open();
+					         socket.onopen 		= onOpened;
+					         socket.onmessage 	= onMessage;
+					         socket.onerror 	= onError;
+					         socket.onclose 	= onClose;
+				        	
+				        });
+	  
+  		  } 
+   
+  onOpened = function(){
+	   
+	 					           alert("connection done!!!");
+  			}
+  
+  onClose = function(){
+	   
+	   					           alert("Connection Closed!!!");
+
+	   		}
+  
+  onMessage = function(message){
+	  
+	                              alert(message.data);
+								   parseJSON =	$.parseJSON(message.data);
+								   alert("got update"+parseJSON.message);
+              }
+  
+  onError  = function(errorobj){
+               alert(errorobj);
+	        //                       connectFeeds(); 
+             }
+  </script>  
+
+</body>
+</html>
