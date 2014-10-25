@@ -54,9 +54,9 @@ public class PubsubServlet extends HttpServlet {
 			  
 		   }
 		   
-		   String channelKey = LiveFeedChannel.getChannelKey(user);
+		   String channelKey             = LiveFeedChannel.getChannelKey(user);
 		   ChannelService channelService = ChannelServiceFactory.getChannelService();
-		   token             = channelService.createChannel(channelKey); 
+		   token                         = channelService.createChannel(channelKey); 
 		   
 		   ChannelToken channelToken = new ChannelToken();
 	       channelToken.setChannelToken(token);

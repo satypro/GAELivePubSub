@@ -48,9 +48,10 @@
   
   onMessage = function(message){
 	  
-	                              alert(message.data);
+	                               //alert(message.data);
 								   parseJSON =	$.parseJSON(message.data);
-								   alert("got update"+parseJSON.message);
+								   //alert("got update"+parseJSON.message);
+								   $("#message").prepend(parseJSON.message);
               }
   
   onError  = function(errorobj){
@@ -58,6 +59,6 @@
 	        //                       connectFeeds(); 
              }
   </script>  
-
+<p id="message"></p>
 </body>
 </html>

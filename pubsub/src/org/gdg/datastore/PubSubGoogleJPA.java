@@ -50,7 +50,6 @@ public class PubSubGoogleJPA implements IPubsubDatabase {
 	 		} 
 	 		catch(Exception ex)
 	 		{
-	 			
 	 			log.severe("Error Occured for ChannelTokens"+user+" "+ex.getMessage());
 	 			return null;
 	 		}
@@ -82,5 +81,4 @@ public class PubSubGoogleJPA implements IPubsubDatabase {
 			}
 	    	
 	    }
-	 
 }
